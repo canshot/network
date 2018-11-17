@@ -8,3 +8,5 @@ print(g.edges(data=True))
 
 print(nx.info(g))
 
+print(nx.triangles(g,0))
+
