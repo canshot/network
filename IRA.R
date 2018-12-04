@@ -46,3 +46,14 @@ el = as.data.frame(cbind(sender = tolower(rt$), receiver = tolower(rt$screenName
 el = count(el, sender, receiver) 
 el[1:5,] #show the first 5 edges in the edgelist
 
+#centrality
+cent <- g %>% 
+        mutate(cen = centrality_degree(),
+              clo = centrality_closeness(),
+              bet = centrality_betweenness(),
+              eigen = centrality_eigen(),
+              page = centrality_pagerank()) %>% 
+        as_tibble %>% 
+        arrange(desc(cen))
+
+g %>% with_graph(graph_mean_dist())
